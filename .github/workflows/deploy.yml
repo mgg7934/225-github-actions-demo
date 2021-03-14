@@ -15,7 +15,11 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-      - name: Deploy to Heroku
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         env: 
           $HEROKU_APP_TOKEN: ${{secrets.HEROKU_APP_TOKEN}} 
           $HEROKU_APP_NAME: ${{secrets.HEROKU_APP_NAME}}
@@ -24,4 +28,3 @@ jobs:
         run: |
           git remote add heroku https://heroku:$HEROKU_APP_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
           git push heroku HEAD:master -f
-
