@@ -14,18 +14,10 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-     # - uses: CDNievas/heroku-action@v1.0 # This is the action
-    #    with:
-     #     heroku_email: "mgg7934@hotmail.com"
-      #    heroku_api_key: ${{secrets.HEROKU_APP_KEY}}
-       #   heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-       env: 
-          $HEROKU_APP_TOKEN: ${{secrets.HEROKU_APP_TOKEN}} 
-          $HEROKU_APP_NAME: ${{secrets.HEROKU_APP_NAME}}
-          
-        if: if github.ref = 'ref/head/master' && job.status = 'success'
-        run: |
-          git remote add heroku https://heroku:$HEROKU_APP_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
-          
-
+      - uses: CDNievas/heroku-action@v1.0 # This is the action
+        with:
+          heroku_email: "mgg7934@hotmail.com"
+          heroku_api_key: ${{secrets.HEROKU_APP_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+       
        
