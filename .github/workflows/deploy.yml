@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: 12
-      - run: npm ci
-      - run: npm run build
-     # - uses: CDNievas/heroku-action@v1.0 # This is the action
-    #    with:
-     #     heroku_email: "mgg7934@hotmail.com"
-      #    heroku_api_key: ${{secrets.HEROKU_APP_KEY}}
-       #   heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          node-version: 14
+      - uses: actions/checkout@v2
+      - uses: CDNievas/heroku-action@v1.0 # This is the action
+        with:
+          heroku_email: "mgg7934@hotmail.com"
+          heroku_api_key: ${{secrets.HEROKU_APP_KEY}}
+          heroku_app_name: "actions-of-github-heroku"
+       
        
